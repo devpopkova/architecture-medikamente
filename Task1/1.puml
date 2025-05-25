@@ -1,0 +1,16 @@
+@startuml DFD_A_Patient_Registration
+actor Patient #777777
+actor "Receptionist" as Rec #10295A
+
+rectangle "P1  Запись пациента" as P1 #87B3FF
+
+database "D1  Журнал записей (Excel)" as D1
+database "D2  Пациенты (Excel)" as D2
+file     "D3  Сканы документов (JPEG/PDF)" as D3
+
+Patient --> Rec : Анкетные данные
+Rec --> P1 : Ввод данных
+P1 --> D1 : + Запись в журнал
+P1 --> D2 : + Создание карточки
+P1 --> D3 : + Загрузка сканов
+@enduml

@@ -1,0 +1,12 @@
+@startuml DFD_E_Warehouse
+actor "Warehouse keeper" as WH #10295A
+
+rectangle "P6  Приход/расход ТМЦ" as P6 #87B3FF
+
+rectangle "S3 1C:Склад"         as S3
+rectangle "S2 1C:Бухгалтерия" as S2
+
+WH --> P6 : Накладные
+P6 --> S3 : ТМЦ-движение
+S3 --> S2 : Проводки
+@enduml

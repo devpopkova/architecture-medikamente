@@ -1,0 +1,14 @@
+@startuml DFD_B_secure
+actor Patient #777777
+actor Doctor  #10295A
+
+rectangle "<&oi_lock_locked> P2  EMR Service\n(TLS 1.3)" as P2
+
+database  "<&oi_lock_locked> EMR DB\n(tag: phi, AES-256)" as EMR
+cloud     "<&oi_lock_locked> Scans Bucket\n(tag: phi, AES-256)" as S3
+
+Patient --> Doctor : Жалобы, симптомы
+Doctor  --> P2 : SOAP-запись (диагноз, рекомендации)
+P2      --> EMR : UPDATE (dynamic mask → non-doctors)
+P2      --> S3  : PUT PDF (скан назначения)
+@enduml
