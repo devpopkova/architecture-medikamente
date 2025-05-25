@@ -1,0 +1,14 @@
+@startuml DFD_B_Doctor_Visit
+actor Patient #777777
+actor Doctor  #10295A
+
+rectangle "P2  Приём и диагностика" as P2 #87B3FF
+
+database D2 as "Пациенты (анкета / Excel)"
+file     D3 as "Медкарта (PDF/JPG)"
+
+Patient --> Doctor : Жалобы / история
+Doctor  --> P2 : Ввод данных приёма
+P2 --> D2 : + Обновление анкеты
+P2 --> D3 : + Добавление сканов карты
+@enduml

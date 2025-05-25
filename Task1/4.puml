@@ -1,0 +1,15 @@
+@startuml DFD_D_Payment
+actor Patient  #777777
+actor Cassier  #10295A
+
+rectangle "P5  Приём оплаты" as P5 #87B3FF
+
+rectangle "S1 1C:Касса"         as S1
+rectangle "S2 1C:Бухгалтерия"   as S2
+rectangle "S3 ККМ"              as S3
+
+Patient --> Cassier : Оплата (нал/карта)
+Cassier --> P5
+P5 --> S3 : Фискальный чек
+S3 --> S2 : PAY-01
+@enduml
